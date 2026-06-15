@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#075e54">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Andini 💫 — WhatsApp Memory</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EG5H5BYGVZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EG5H5BYGVZ');
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div id="loading-screen">
+  <div class="loading-logo">💬</div>
+  <div class="loading-title">WhatsApp Memory</div>
+  <div class="loading-progress-wrap">
+    <div class="loading-progress-bar" id="loading-bar" style="width:0%"></div>
+  </div>
+  <div class="loading-status" id="loading-status">Memuat kenangan...</div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div id="app">
+
+  <!-- HEADER -->
+  <header id="chat-header">
+    <div class="avatar" title="Lihat profil">H</div>
+    <div class="header-info">
+      <div class="header-name">Andini 💫</div>
+      <div class="header-sub">+62 812-8018-8314 · 25.610 pesan</div>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="dark-toggle" title="Dark/Light mode">🌙</button>
+      <button class="icon-btn" id="search-icon" title="Cari pesan">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- SEARCH BAR -->
+  <div id="search-bar">
+    <button id="search-close" class="search-nav-btn" title="Tutup pencarian">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <input type="text" id="search-input" placeholder="Cari pesan..." autocomplete="off">
+    <span id="search-count"></span>
+    <button id="search-prev" class="search-nav-btn" title="Sebelumnya">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="18,15 12,9 6,15"/>
+      </svg>
+    </button>
+    <button id="search-next" class="search-nav-btn" title="Berikutnya">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="6,9 12,15 18,9"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- MESSAGES -->
+  <div id="messages-wrapper">
+    <div id="messages-container">
+      <!-- Pesan akan dirender oleh JavaScript -->
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ FLOATING ACTION BUTTONS ============ -->
+<div id="fab-container">
+  <button class="fab" id="fab-stats" title="Statistik Chat" style="font-size:18px">📊</button>
+  <button class="fab" id="fab-date" title="Lompat ke Tanggal" style="font-size:18px">📅</button>
+  <button class="fab" id="fab-top" title="Ke Pesan Pertama" style="font-size:18px">⬆️</button>
+  <button class="fab" id="fab-bottom" title="Ke Pesan Terakhir" style="font-size:18px">⬇️</button>
+  <button class="fab primary" id="fab-memory" title="Kenangan Acak">🎲</button>
+</div>
+
+<!-- ============ DATE JUMP MODAL ============ -->
+<div class="modal-overlay" id="date-modal">
+  <div class="modal">
+    <div class="modal-title">
+      📅 Lompat ke Tanggal
+      <button class="modal-close" id="close-date-modal">×</button>
+    </div>
+    <div class="date-list" id="date-list">
+      <!-- Tanggal diisi oleh JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- ============ STATS PANEL ============ -->
+<div id="stats-panel">
+  <div class="stats-container">
+    <div class="stats-header">
+      <div class="stats-title">📊 Statistik Percakapan</div>
+      <button class="modal-close" id="close-stats">×</button>
+    </div>
+    <div id="stats-content">
+      <!-- Konten statistik diisi JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- ============ RANDOM MEMORY TOAST ============ -->
+<div id="memory-toast">
+  <div class="memory-card">
+    <div class="memory-emoji" id="memory-emoji">💫</div>
+    <div class="memory-date" id="memory-date"></div>
+    <div class="memory-sender" id="memory-sender"></div>
+    <div class="memory-text" id="memory-text"></div>
+    <div class="memory-actions">
+      <button class="btn btn-secondary" id="memory-close">Tutup</button>
+      <button class="btn btn-secondary" id="memory-again">🎲 Lagi</button>
+      <button class="btn btn-primary" id="memory-goto">Lihat Chat →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
+<!-- Data percakapan di-embed langsung — tidak perlu server/internet -->
+<script src="chat_data.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
